@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  call-workflow:
-    uses: msargent-dev/dynamic-exec/.github/workflows/concurrency-test.yml@staging
-    concurrency:
-      group: msargent-dev-test  # Shared concurrency group name
-      cancel-in-progress: false 
+  dispatch_reusable_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch Reusable Workflow
+        run: |
+          gh workflow run msargent-dev/dynamic-exec/blob/staging/.github/workflows/concurrency-dispatch.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ensure necessary permissions
