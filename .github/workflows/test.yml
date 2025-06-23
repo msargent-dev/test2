@@ -6,3 +6,6 @@ on:
 jobs:
   call-workflow:
     uses: msargent-dev/dynamic-exec/.github/workflows/concurrency-test.yml@staging
+    concurrency:
+      group: msargent-dev-test  # Shared concurrency group name
+      cancel-in-progress: false 
