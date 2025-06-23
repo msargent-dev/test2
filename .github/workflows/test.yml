@@ -1,0 +1,8 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-workflow:
+    uses: msargent-dev/dynamic-exec/.github/workflows/concurrency-test.yml@staging
