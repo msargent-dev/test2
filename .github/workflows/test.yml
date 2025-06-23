@@ -9,6 +9,6 @@ jobs:
     steps:
       - name: Dispatch Reusable Workflow
         run: |
-          gh workflow run msargent-dev/dynamic-exec/blob/staging/.github/workflows/concurrency-dispatch.yml
+          gh workflow run msargent-dev/dynamic-exec/.github/workflows/concurrency-dispatch.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Ensure necessary permissions
