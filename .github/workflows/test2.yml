@@ -1,0 +1,13 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  checkout-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: Rockwell-Automation-Inc/cds_toolchains
+          token: ${{ secrets.ACT_PAT }}
