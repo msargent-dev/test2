@@ -34,6 +34,7 @@ jobs:
   both:
     name: both triggers
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || github.event_name == 'pull_request_trigger'
     steps:
       - name: echo
         run: |
@@ -42,6 +43,7 @@ jobs:
   pr:
     name: pr only
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - name: echo
         run: |
@@ -50,6 +52,7 @@ jobs:
   trigger:
     name: trigger only
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request_trigger'
     steps:
       - name: echo
         run: |
