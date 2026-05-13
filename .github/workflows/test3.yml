@@ -67,3 +67,4 @@ jobs:
         run: |
           echo "$GITHUB_REF"
           echo "${{ github.ref }}"
+          echo ""${{github.event_name}}
