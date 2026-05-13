@@ -57,3 +57,12 @@ jobs:
       - name: echo
         run: |
           echo "pr trigger"
+
+  always:
+    name: always run
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: always
+        run: |
+          echo: "always"
