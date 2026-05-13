@@ -1,0 +1,56 @@
+name: Security Workflows
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  pull_request_target:
+    types:
+      - reopened
+      - opened
+      - unlocked
+      - synchronize
+  schedule:
+    - cron: '0 2 * * 1'
+    # Runs at 2:00 AM every Monday
+    # this schedule only triggers the GHAS Code scanning workflow,
+    # the other workflows are triggered by push and pull request events
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  security-events: write
+  pull-requests: write
+  packages: read
+  actions: read
+  contents: read
+
+jobs:
+  both:
+    name: both triggers
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: |
+          echo "both"
+
+  pr:
+    name: pr only
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: |
+          echo "pr"
+
+  trigger:
+    name: trigger only
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: |
+          echo "pr trigger"
